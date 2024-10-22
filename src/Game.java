@@ -1,53 +1,113 @@
-//public class Game {
-//    private Board board;
-//    private Player player;
-//
-//    // Konstruktor
-//    public Game(int rows, int columns, int numberOfBombs, String playerName) {
-//        board = new Board(); // Skapar en ny spelplan
-//        player = new Player(playerName); // Skapar en ny spelare
-//    }
-//
-//
-//    // Metod för att starta spelet
-//    public void start() {
-//        board.placeBombs(); // Slumpar och placerar bomber på spelplanen
-//        boolean gameOn = true;
-//
-//        while (gameOn) {
-//            board.displayBoard(); // Visar spelplanens nuvarande status
-//            System.out.println(player.getName() + ", välj en ruta (ange rad och kolumn):");
-//
-//            // Exempel på spelarens inmatning
-//            int row = getInput("Ange rad: ");
-//            int column = getInput("Ange kolumn: ");
-//
-//            // Kolla om spelaren valde en ruta med en bomb
-//            if (board.revealCell(row, column)) {
-//                System.out.println("Oj, du valde en bomb! Du förlorade.");
-//                gameOn = false;
-//            } else if (isWin()) {
-//                System.out.println("Grattis! Du har undersökt alla säkra rutor och vunnit spelet!");
-//                gameOn = false;
-//            }
-//        }
-//    }
-//
-//    // Metod som kontrollerar om alla säkra rutor är undersökta
-//    public boolean isWin() {
-//        return board.allCellsRevealed(); // Kollar om alla säkra rutor har öppnats
-//    }
-//
-//    // Metod som kontrollerar om spelaren har förlorat (om en bomb valdes)
-//    public boolean isLoss() {
-//        return board.hasBombExploded(); // Returnerar om en bomb har valts
-//    }
-//
-//    // Hjälpmetod för att hantera användarinmatning
-//    private int getInput(String message) {
-//        System.out.print(message);
-//        // Använder Scanner för att läsa spelarens val
-//        java.util.Scanner scanner = new java.util.Scanner(System.in);
-//        return scanner.nextInt();
-//    }
-//}
+import java.util.Scanner;
+
+public class Game {
+
+
+    Scanner sc = new Scanner(System.in);
+    Board board = new Board();
+    Player player1 = new Player("", 0, 'x');
+
+
+    boolean gameOver = false;
+
+
+    public void play() {
+        while (true) {
+            System.out.println("\uD83D\uDCA3 Welcome to MineSweep\uD83D\uDCA3   1:Play 0:Quit!");
+            int choice = sc.nextInt();
+
+            while (!gameOver) {
+                try {
+                    if (choice == 0) {
+                        System.out.println("Thank you for playing!,Bye!!");
+                        System.exit(0);
+                    } else if (choice == 1) {
+
+
+                    }
+                    board.displayBoard();
+                    BoardMovement(board.getBoard(), sc, player1);
+
+
+                } catch (Exception e) {
+                    System.out.println("Invalid input, please try again.");
+                    sc.nextLine();
+                }
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void BoardMovement(char[][] board,Scanner sc,Player player1) {
+
+                boolean gameOver = false;
+            boolean validMove = false;
+
+            while (!validMove) {
+                try {
+                    System.out.println("Enter your move Player 1" + player1.getSymbol());
+                    int move = sc.nextInt();
+                    int row = (move - 1) / 6;
+                    int col = (move - 1) % 6;
+
+                    if (move == 0) {
+                        System.out.println("Thanks for playing!, bye!!");
+                        System.exit(0);
+
+                    }
+                    if (row < 0 && row > 5) {
+                        System.out.println("Invalid input, please try again. row 1-6 & col 1-6");
+
+
+                    }
+                    if (board[row][col] == '0') {
+                        System.out.println("kaamboom!!!");
+                        gameOver = true;
+                    } else {
+                        board[row][col] = player1.getSymbol();
+                        validMove = true;
+
+                    }
+
+                }catch (Exception e) {
+                    System.out.println("Invalid input, please try again.");
+                    sc.nextLine();
+                }
+            }
+
+        }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
