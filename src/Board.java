@@ -67,26 +67,34 @@ public class Board {
 
         int cols = 6;
         int rows = 6;
+        int numberOfBombs = 5;
+        int cellValue = 0;
 
         ArrayList<String> cells = new ArrayList<>();
 
-        System.out.println("     1   2   3   4   5   6");
+        System.out.println("     a   b   c   d   e   f");
         System.out.println("   +–––+–––+–––+–––+–––+–––+");
-        System.out.print(" a | ");
 
-        for (int i = 0; i < (cols * rows); i++) {
-            cells.add(" ");
+        for (int i = 0; i < (rows); i++) {
+            System.out.print((i + 1) + "  |");
 
-            int randomNum = (int) Math.floor(Math.random() * 5) + 1;
-            if (i == randomNum) {
-                cells.add(i, "x");
+            for (int j = 0; j < (cols); j++) {
+                cells.add(String.valueOf(cellValue));
+
+                System.out.print(" " + cells.get(cellValue) + " |");
+//                int randomNum = (int) Math.floor(Math.random() * (rows * cols)) + 1;
+//                if (j == randomNum) {
+//                    cells.add(j, "B");
+                cellValue++;
             }
+            System.out.println("\n   +–––+–––+–––+–––+–––+–––+");
+    }
 
-            System.out.println(cells.get(i));
 
-        }
+
     }
 }
+
 
 
 //    }
