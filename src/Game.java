@@ -8,6 +8,7 @@ public class Game {
         player = new Player(playerName); // Skapar en ny spelare
     }
 
+
     // Metod för att starta spelet
     public void start() {
         board.placeBombs(); // Slumpar och placerar bomber på spelplanen
