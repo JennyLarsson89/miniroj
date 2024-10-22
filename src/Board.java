@@ -16,13 +16,13 @@ public class Board {
 
     public void createBoard() {
 
-        System.out.println("     a   b   c   d   e   f");
+    System.out.println("     a   b   c   d   e   f");
 
         for (int i = 0; i < (rows); i++) {
             System.out.print((i + 1) + "  |");
 
             for (int j = 0; j < (cols); j++) {
-            cells.add("C");
+            cells.add(" ");
                 System.out.print(" " + cells.get(cellValue) + " |");
                 cellValue++;
             }
@@ -33,10 +33,25 @@ public class Board {
         public void placeBombs() {
             while (bombLoop < numberOfBombs) {
                 randomNum = (int) Math.floor(Math.random() * (rows * cols)) + 1;
-                cells.add(randomNum, "B");
+                cells.set(randomNum, "B");
                 System.out.println(randomNum);
                 bombLoop++;
             }
         }
+
+    public void displayBoard() {
+        cellValue = 0;
+        System.out.println("     a   b   c   d   e   f");
+
+        for (int i = 0; i < (rows); i++) {
+            System.out.print((i + 1) + "  |");
+
+            for (int j = 0; j < (cols); j++) {
+                System.out.print(" " + cells.get(cellValue) + " |");
+                cellValue++;
+            }
+            System.out.println();
+        }
+    }
 
 }

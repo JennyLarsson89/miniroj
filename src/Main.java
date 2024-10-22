@@ -4,7 +4,7 @@ public class Main {
         Board myBoard = new Board();
         myBoard.createBoard();
         myBoard.placeBombs();
-//        myBoard.displayEmptyBoard();
-//        myBoard.placeBombs();
+        myBoard.displayBoard();
+
     }
 }
