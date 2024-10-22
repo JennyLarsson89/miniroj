@@ -47,8 +47,7 @@ public class Board {
     private String f5 = " ";
     private String f6 = " ";
 
-    public void displayBoard() {
-        System.out.println("     1   2   3   4   5   6");
+    public void displayEmptyBoard() {
         System.out.println("   +–––+–––+–––+–––+–––+–––+");
         System.out.println(" a | " + a1 + " | " + a2 + " | " + a3 + " | " + a4 + " | " + a5 + " | " + a6 + " |");
         System.out.println("   +–––+–––+–––+–––+–––+–––+");
@@ -64,36 +63,61 @@ public class Board {
         System.out.println("   +–––+–––+–––+–––+–––+–––+");
     }
 
-    public void placeBombs() {
-        String bombChar = "";
+    public void displayBoard() {
 
-        for (int i = 0; i < 5; i++) {
+        int cols = 6;
+        int rows = 6;
 
-            int randomNum = (int) Math.floor(Math.random() * 6) + 1;
-            int randomChar = (int) Math.floor(Math.random() * 6) + 1;
+        ArrayList<String> cells = new ArrayList<>();
 
-            if (randomChar == 1) {
-                bombChar = "a";
-            } else if (randomChar == 2) {
-                bombChar = "b";
-            } else if (randomChar == 3) {
-                bombChar = "c";
-            } else if (randomChar == 4) {
-                bombChar = "d";
-            } else if (randomChar == 5) {
-                bombChar = "e";
-            } else if (randomChar == 6) {
-                bombChar = "f";
+        System.out.println("     1   2   3   4   5   6");
+        System.out.println("   +–––+–––+–––+–––+–––+–––+");
+        System.out.print(" a | ");
+
+        for (int i = 0; i < (cols * rows); i++) {
+            cells.add(" ");
+
+            int randomNum = (int) Math.floor(Math.random() * 5) + 1;
+            if (i == randomNum) {
+                cells.add(i, "x");
             }
 
-            String bombCoor = (bombChar + randomNum);
-            System.out.println(bombCoor);
+            System.out.println(cells.get(i));
 
         }
     }
 }
 
 
-
+//    }
+//
+//    public void placeBombs() {
+//        String bomb = "";
+//
+//        for (int i = 0; i < 5; i++) {
+//
+//            int randomNum = (int) Math.floor(Math.random() * 6) + 1;
+//            int randomChar = (int) Math.floor(Math.random() * 6) + 1;
+//
+//            if (randomChar == 1) {
+//                bomb = ("a" + randomNum);
+//            } else if (randomChar == 2) {
+//                bomb = ("b" + randomNum);
+//            } else if (randomChar == 3) {
+//                bomb = ("c" + randomNum);
+//            } else if (randomChar == 4) {
+//                bomb = ("d" + randomNum);
+//            } else if (randomChar == 5) {
+//                bomb = ("e" + randomNum);
+//            } else if (randomChar == 6) {
+//                bomb = ("f" + randomNum);
+//            }
+//
+//        }
+//    }
+//}
+//
+//
+//
 
 

@@ -3,6 +3,7 @@ public class Main {
 
         Board myBoard = new Board();
         myBoard.displayBoard();
-        myBoard.placeBombs();
+//        myBoard.displayEmptyBoard();
+//        myBoard.placeBombs();
     }
 }
