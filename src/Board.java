@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
-    int cols = 6;
-    int rows = 6;
-    int numberOfBombs = 5;
+    int cols = 10;
+    int rows = 4;
+    int numberOfBombs = 3;
     int cellValue = 0;
     int randomNum = 0;
     int bombLoop = 0;
@@ -16,7 +17,6 @@ public class Board {
 
     public void createBoard() {
 
-    System.out.println("     a   b   c   d   e   f");
 
         for (int i = 0; i < (rows); i++) {
             System.out.print((i + 1) + "  |");
@@ -41,7 +41,17 @@ public class Board {
 
     public void displayBoard() {
         cellValue = 0;
-        System.out.println("     a   b   c   d   e   f");
+
+        int length = cols;
+        List<Character> alphabetList = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            alphabetList.add((char)('a' + i));
+        }
+        System.out.print("     ");
+        for (Character c : alphabetList) {
+        System.out.print(c + "   ");
+        }
+        System.out.println();
 
         for (int i = 0; i < (rows); i++) {
             System.out.print((i + 1) + "  |");
