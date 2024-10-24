@@ -43,6 +43,7 @@ public Board() {
             board[row - 1][col - 1] = "X";  // Markerar vald ruta med 'X'
         }
     }
+    
 
 
     /**
