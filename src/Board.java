@@ -30,10 +30,19 @@ public Board() {
         for (int j = 0; j < board[i].length; j++) {
             System.out.print(board[i][j] + "-");
         }
-
         System.out.println();
     }
 }
+
+    public void selectCell(int row, int col) {
+        if (row < 1 || row > 6 || col < 1 || col > 6) {
+            System.out.println("Invalid choice, try again!");
+        } else if (!board[row - 1][col - 1].equals(" ")) {
+            System.out.println("Cell already chosen! Select another one.");
+        } else {
+            board[row - 1][col - 1] = "X";  // Markerar vald ruta med 'X'
+        }
+    }
 
 
     /**
