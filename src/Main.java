@@ -1,8 +1,9 @@
 public class Main {
     public static void main(String[] args) {
 
-       Board board = new Board();
-       board.DisplayBoard();
+        Player player = new Player("","x");
+        Game game = new Game(player,new Board());
+        game.play();
 
     }
 }
