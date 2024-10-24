@@ -1,22 +1,22 @@
 public class Player {
     private final String name;
-    private int score;
+    private char playerSymbol;
 
     // Const
     public Player(String name) {
         this.name = name;
-        this.score = 0;
+        this.playerSymbol = playerSymbol;
     }
 
     public String getName() {
         return name;
     }
+    public char setPlayerSymbol() {return playerSymbol;}
+    public char getPlayerSymbol() {return playerSymbol;}
 
-    public int getScore() {
-        return score;
-    }
 
-    public void addScore(int score) {
-        this.score++;
-    }
+
+
 }
+
+
