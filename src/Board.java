@@ -45,10 +45,23 @@ public Board(int row, int col) {
         playerCol = sc.nextInt();
         if (playerRow < 1 || playerRow > 6 || playerCol < 1 || playerCol > 6) {
             System.out.println("Invalid choice, try again!");
+        } else if (!board[playerRow - 1][playerCol - 1].equals("o")) {
+            System.out.println("KABOOOM!");
+             System.exit(2);
         } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
             System.out.println("Cell already chosen! Select another one.");
         } else {
             board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
+        }
+    }
+
+    public void placeBombs() {
+        for (int i = 0; i < board[0].length; i++) {
+            int r = (int) Math.floor(Math.random() * board.length);
+            int c = (int) Math.floor(Math.random() * board[0].length);
+            if (board[r][c] == board[0][0]) {
+                board[r][c] = "o";
+            }
         }
     }
 

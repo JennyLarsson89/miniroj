@@ -10,7 +10,14 @@ Board board = new Board(6, 6);
     /**
      * The game loop starts here.
      */
-    public void play(){}
+    public void play(){
+        Board board = new Board(6, 6);
+
+        board.DisplayBoard();
+        board.placeBombs();
+        board.selectCell();
+
+    }
 
 
 
