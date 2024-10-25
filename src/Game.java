@@ -11,11 +11,11 @@ Board board = new Board(6, 6);
      * The game loop starts here.
      */
     public void play(){
-        Board board = new Board(6, 6);
-
-        board.DisplayBoard();
+        board.initializeBoard();
+        board.displayBoard();
         board.placeBombs();
         board.selectCell();
+        board.displayBoard();
 
     }
 

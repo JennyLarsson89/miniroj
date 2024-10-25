@@ -9,14 +9,13 @@ public Board(int row, int col) {
     this.playerRow = playerRow;
     this.playerCol = playerCol;
     board = new String[6][6];
-    inizializeBoard();
 }
 
 
     /**
      * Makes the board empty
      */
-    public void inizializeBoard() {
+    public void initializeBoard() {
     for (int i = 0; i <6 ; i++) {
         for (int j = 0; j <6 ; j++) {
             board[i][j] = " ";
@@ -28,7 +27,7 @@ public Board(int row, int col) {
     /**
      * Prints out the board with empty space
      */
-    public void DisplayBoard() {
+    public void displayBoard() {
     for (int i = 0; i < board.length; i++) {
         for (int j = 0; j < board[i].length; j++) {
             System.out.print(board[i][j] + "-");
@@ -36,6 +35,16 @@ public Board(int row, int col) {
         System.out.println();
     }
 }
+
+    public void placeBombs() {
+        for (int i = 0; i < board[0].length; i++) {
+            int r = (int) Math.floor(Math.random() * board.length);
+            int c = (int) Math.floor(Math.random() * board[0].length);
+//            if (board[r][c] == board[0][0]) {
+                board[r][c] = "o";
+            //}
+        }
+    }
 
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
@@ -45,8 +54,9 @@ public Board(int row, int col) {
         playerCol = sc.nextInt();
         if (playerRow < 1 || playerRow > 6 || playerCol < 1 || playerCol > 6) {
             System.out.println("Invalid choice, try again!");
-        } else if (!board[playerRow - 1][playerCol - 1].equals("o")) {
+        } else if (board[playerRow - 1][playerCol - 1].equals("o")) {
             System.out.println("KABOOOM!");
+            displayBoard();
              System.exit(2);
         } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
             System.out.println("Cell already chosen! Select another one.");
@@ -55,15 +65,7 @@ public Board(int row, int col) {
         }
     }
 
-    public void placeBombs() {
-        for (int i = 0; i < board[0].length; i++) {
-            int r = (int) Math.floor(Math.random() * board.length);
-            int c = (int) Math.floor(Math.random() * board[0].length);
-            if (board[r][c] == board[0][0]) {
-                board[r][c] = "o";
-            }
-        }
-    }
+
 
 
 
