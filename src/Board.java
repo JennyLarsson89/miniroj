@@ -1,10 +1,13 @@
-
+import java.util.Scanner;
 
 public class Board {
 private String[][] board;
+private int playerRow;
+private int playerCol;
 
-
-public Board() {
+public Board(int row, int col) {
+    this.playerRow = playerRow;
+    this.playerCol = playerCol;
     board = new String[6][6];
     inizializeBoard();
 }
@@ -34,16 +37,21 @@ public Board() {
     }
 }
 
-    public void selectCell(int row, int col) {
-        if (row < 1 || row > 6 || col < 1 || col > 6) {
+    public void selectCell() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter the row number");
+        playerRow = sc.nextInt();
+        System.out.println("Please enter the column number");
+        playerCol = sc.nextInt();
+        if (playerRow < 1 || playerRow > 6 || playerCol < 1 || playerCol > 6) {
             System.out.println("Invalid choice, try again!");
-        } else if (!board[row - 1][col - 1].equals(" ")) {
+        } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
             System.out.println("Cell already chosen! Select another one.");
         } else {
-            board[row - 1][col - 1] = "X";  // Markerar vald ruta med 'X'
+            board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
         }
     }
-    
+
 
 
     /**

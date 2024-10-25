@@ -5,7 +5,7 @@ public class Game {
 
 Scanner sc = new Scanner(System.in);
 Player player = new Player("",'x');
-Board board = new Board();
+Board board = new Board(6, 6);
 
     /**
      * The game loop starts here.
