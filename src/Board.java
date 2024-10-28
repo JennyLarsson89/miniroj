@@ -25,6 +25,7 @@ public class Board {
 
     Menu menu = new Menu();
 
+
     /**
      * Makes the board empty
      */
@@ -57,7 +58,9 @@ public class Board {
     }
 
     public void finalBoard() {
+        System.out.println("  1 2 3 4 5 6");
         for (int i = 0; i < board.length; i++) {
+            System.out.print(i + 1 + " ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + "|");
             }
@@ -83,6 +86,10 @@ public class Board {
         while (!rowChoice) {
             System.out.println("Please enter the row number. (0 to quit)");
             playerRow = sc.nextInt();
+            if (playerRow == 0){
+                System.out.println("Thank you! Bye");
+                System.exit(0);
+            }
 
             if (playerRow < 1 || playerRow > 6) {
                 System.out.println("Invalid choice, try again!");
@@ -95,6 +102,12 @@ public class Board {
         while (!colChoice) {
             System.out.println("Please enter the column number. (0 to quit)");
             playerCol = sc.nextInt();
+
+            if (playerCol == 0){
+                System.out.println("Thank you! Bye");
+                System.exit(0);
+            }
+
             if (playerCol < 1 || playerCol > 6) {
                 System.out.println("Invalid choice, try again!");
             } else {
@@ -105,7 +118,7 @@ public class Board {
             if (board[playerRow - 1][playerCol - 1].equals("o")) {
                 finalBoard();
                 System.out.println("KABOOOM!");
-                menu.runMenu();
+                menu.runMenuAgain();
 
             } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
                 System.out.println("Cell already chosen! Select another one.");
