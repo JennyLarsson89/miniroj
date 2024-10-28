@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Game {
 
 
-    Scanner sc = new Scanner(System.in);
-    Board board = new Board(6, 6);
-    boolean gameOver = false;
+Scanner sc = new Scanner(System.in);
+Player player = new Player("",'x');
+Board board = new Board(6, 6);
 
-
+boolean gameOver = false;
     /**
      * The game loop starts here.
      */
@@ -30,6 +30,19 @@ public class Game {
         }
         return false;
     }
+
+
+
+
+    /**
+     * Checks for valid moves and If you picked a bomb spot.
+     */
+    public void checkForValidMoves(){}
+
+
+
+
+
 
 
 
