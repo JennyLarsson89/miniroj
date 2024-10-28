@@ -91,16 +91,8 @@ private int playerCol;
         } else {
             board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
         }
-    }
 
-
-
-
-
-    /**
-     * Custom placement for the board with number and letter.
-     */
-    public void customPlacementBoard() {}
+  
 
 
 
