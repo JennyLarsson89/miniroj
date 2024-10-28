@@ -24,6 +24,7 @@ public class Board {
     }
 
     Menu menu = new Menu();
+    BoardColor boardColor = new BoardColor();
 
     /**
      * Makes the board empty
@@ -42,14 +43,14 @@ public class Board {
      */
 
     public void displayBoard() {
-        System.out.println("  1 2 3 4 5 6");
+        System.out.println(boardColor.ANSI_PURPLE+ "  1 2 3 4 5 6"+ boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
-            System.out.print(i + 1 + " ");
+            System.out.print(boardColor.ANSI_YELLOW + (i + 1) + " "+boardColor.ANSI_RESET );
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].equals("o")) {
                     System.out.print(" |");
                 } else {
-                    System.out.print(board[i][j] + "|");
+                    System.out.print(boardColor.ANSI_BLUE + board[i][j] + "|" + boardColor.ANSI_RESET);
                 }
             }
             System.out.println();
@@ -84,6 +85,11 @@ public class Board {
             System.out.println("Please enter the row number. (0 to quit)");
             playerRow = sc.nextInt();
 
+            if (playerRow == 0){
+                System.out.println("Thanks for playing, bye!!");
+                System.exit(0);
+            }
+
             if (playerRow < 1 || playerRow > 6) {
                 System.out.println("Invalid choice, try again!");
             } else {
@@ -95,6 +101,10 @@ public class Board {
         while (!colChoice) {
             System.out.println("Please enter the column number. (0 to quit)");
             playerCol = sc.nextInt();
+            if (playerCol == 0 ){
+                System.out.println("Thanks for playing, bye!!");
+                System.exit(0);
+            }
             if (playerCol < 1 || playerCol > 6) {
                 System.out.println("Invalid choice, try again!");
             } else {
