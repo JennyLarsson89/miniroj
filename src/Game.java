@@ -19,7 +19,6 @@ boolean gameOver = false;
         board.selectCell();
         board.displayBoard();
         }
-        board.finalBoard();
     }
 
     public boolean checkDeath(int playerRow, int playerCol, String[][] board) {

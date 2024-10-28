@@ -14,16 +14,15 @@ public class Menu {
 
                 System.out.println("Welcome to minesweeper! Whats your name?");
                 String playerName = sc.nextLine();
-                System.out.println("Hello, " + playerName + " press 1 to Play or 2 to Quit");
-
+                System.out.println("Hello, " + playerName + " press 1 to Play or 0 to Quit");
 
                 int menuChoice = sc.nextInt();
 
                 if (menuChoice == 1){
                     Game game = new Game();
                     game.play();
-                } else if (menuChoice == 2){
-                    System.exit(2);
+                } else if (menuChoice == 0){
+                    System.exit(0);
                 }
 
 
