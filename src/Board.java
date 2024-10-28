@@ -138,8 +138,7 @@ private int playerCol;
             board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
         }
 
-        //Closing Scanner
-        sc.close();
+
     }
 
 
