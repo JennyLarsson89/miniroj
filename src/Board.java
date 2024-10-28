@@ -5,38 +5,19 @@ private String[][] board;
 private int playerRow;
 private int playerCol;
 
-    /**
-     *
-     * @return Getter for the board to use in different class.
-     */
     public String[][] getBoard() {
         return board;
     }
 
-    /**
-     *
-     * @return Getter for the playerRow.
-     */
     public int getPlayerRow() {
         return playerRow;
     }
 
-
-    /**
-     *
-     * @return Getter for the playerCol.
-     */
     public int getPlayerCol() {
         return playerCol;
     }
 
-
-    /**
-     *
-     * @param playerRow Movement for the board row
-     * @param playerCol Movement for the board col
-     */
-    public Board(int playerRow, int playerCol) {
+    public Board(int row, int col) {
     this.playerRow = playerRow;
     this.playerCol = playerCol;
     board = new String[6][6];
@@ -58,6 +39,7 @@ private int playerCol;
     /**
      * Prints out the board with empty space
      */
+
     public void displayBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -71,10 +53,6 @@ private int playerCol;
         }
     }
 
-
-    /**
-     * Method for Printing out the board with the bomb placement.
-     */
     public void finalBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -86,48 +64,24 @@ private int playerCol;
 
 
 
-    /**
-     * Method for placing bombs on the board.
-     */
+
     public void placeBombs() {
         for (int i = 0; i < board[0].length; i++) {
             int r = (int) Math.floor(Math.random() * board.length);
             int c = (int) Math.floor(Math.random() * board[0].length);
-            board[r][c] = "o";
-
+//            if (board[r][c] == board[0][0]) {
+                board[r][c] = "o";
+            //}
         }
     }
 
-
-
-
-    /**
-     * Method for selecting a positions on the board.
-     */
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter the row number 0:Quit");
-
+        System.out.println("Please enter the row number");
         playerRow = sc.nextInt();
-
-         //Quits the game with 0
-        if (playerRow == 0) {
-            System.out.println("Thanks for playing, bye!!");
-            System.exit(0);
-        }
-
-        System.out.println("Please enter the column number 0:Quit");
-
-        //Quits the game with 0
-        if (playerCol == 0) {
-            System.out.println("Thanks for playing, bye!!");
-            System.exit(0);
-        }
-
+        System.out.println("Please enter the column number");
         playerCol = sc.nextInt();
-
-
-        if (playerRow < 1 || playerRow > board.length || playerCol < 1 || playerCol > board.length) {
+        if (playerRow < 1 || playerRow > 6 || playerCol < 1 || playerCol > 6) {
             System.out.println("Invalid choice, try again!");
         } else if (board[playerRow - 1][playerCol - 1].equals("o")) {
             System.out.println("KABOOOM!");
@@ -137,9 +91,18 @@ private int playerCol;
         } else {
             board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
         }
-
-
     }
+
+
+
+
+
+    /**
+     * Custom placement for the board with number and letter.
+     */
+    public void customPlacementBoard() {}
+
+
 
 
 
