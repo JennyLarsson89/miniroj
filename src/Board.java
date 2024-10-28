@@ -109,7 +109,6 @@ public class Board {
             System.out.println("Please enter the column number. (0 to quit)");
             playerCol = sc.nextInt();
 
-         >>>>>>> main
             if (playerCol < 1 || playerCol > 6) {
                 System.out.println("Invalid choice, try again!");
             } else {
