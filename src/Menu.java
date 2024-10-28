@@ -31,6 +31,7 @@ public class Menu {
                 System.out.println("Invalid input");
 
             }
+        }
+        }
 
-
-
+    }
