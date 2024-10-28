@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 public class Game {
 
-
-Scanner sc = new Scanner(System.in);
-Player player = new Player("",'x');
 Board board = new Board(6, 6);
 
 boolean gameOver = false;
@@ -21,22 +18,11 @@ boolean gameOver = false;
         }
     }
 
-    public boolean checkDeath(int playerRow, int playerCol, String[][] board) {
-        if (board[playerRow][playerCol].equals("o")) {
-            System.out.println("Death");
-            return true;
-
-        }
-        return false;
-    }
 
 
 
 
-    /**
-     * Checks for valid moves and If you picked a bomb spot.
-     */
-    public void checkForValidMoves(){}
+
 
 
 
