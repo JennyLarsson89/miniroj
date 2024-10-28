@@ -43,8 +43,8 @@ private int playerCol;
     public void displayBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].equals("o")) { // Om "o" är din bomb-symbol
-                    System.out.print(" |"); // Visa något annat istället
+                if (board[i][j].equals("o")) {
+                    System.out.print(" |"); 
                 } else {
                     System.out.print(board[i][j] + "|");
                 }
