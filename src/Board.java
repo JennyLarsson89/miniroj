@@ -42,9 +42,10 @@ private int playerCol;
 
     public void displayBoard() {
         for (int i = 0; i < board.length; i++) {
+            System.out.println("xxx");
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].equals("o")) {
-                    System.out.print(" |"); 
+                    System.out.print(" |");
                 } else {
                     System.out.print(board[i][j] + "|");
                 }
