@@ -33,4 +33,28 @@ public class Menu {
         }
         }
 
+    public void runMenuAgain() {
+        while (true) {
+            try {
+
+                System.out.println("Press 1 to Play or 0 to Quit");
+
+                int menuChoice = sc.nextInt();
+
+                if (menuChoice == 1){
+                    Game game = new Game();
+                    game.play();
+                } else if (menuChoice == 0){
+                    System.exit(0);
+                }
+
+
+            } catch (Exception e){
+                System.out.println("Invalid input");
+
+            }
+        }
+    }
+
+
     }
