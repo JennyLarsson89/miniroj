@@ -5,47 +5,31 @@ private String[][] board;
 private int playerRow;
 private int playerCol;
 
-    /**
-     *
-     * @return Getter for the board to use in different class.
-     */
+    /**@return Getter for the board to use in different class.*/
     public String[][] getBoard() {
         return board;
     }
 
-    /**
-     *
-     * @return Getter for the playerRow.
-     */
+    /**@return Getter for the playerRow.*/
     public int getPlayerRow() {
         return playerRow;
     }
 
-
-    /**
-     *
-     * @return Getter for the playerCol.
-     */
+    /**@return Getter for the playerCol.*/
     public int getPlayerCol() {
         return playerCol;
     }
 
 
-    /**
-     *
-     * @param playerRow Movement for the board row
-     * @param playerCol Movement for the board col
-     */
+    /**@param playerRow Movement for the board row
+     * @param playerCol Movement for the board col*/
     public Board(int playerRow, int playerCol) {
     this.playerRow = playerRow;
     this.playerCol = playerCol;
     board = new String[6][6];
 }
 
-
-    /**
-     * Makes the board empty
-     */
+    /**Makes the board empty*/
     public void initializeBoard() {
     for (int i = 0; i <6 ; i++) {
         for (int j = 0; j <6 ; j++) {
@@ -54,10 +38,7 @@ private int playerCol;
     }
 }
 
-
-    /**
-     * Prints out the board with empty space
-     */
+    /**Prints out the board with empty space*/
     public void displayBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -71,10 +52,7 @@ private int playerCol;
         }
     }
 
-
-    /**
-     * Method for Printing out the board with the bomb placement.
-     */
+    /**Method for Printing out the board with the bomb placement.*/
     public void finalBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

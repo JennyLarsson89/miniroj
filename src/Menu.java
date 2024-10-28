@@ -4,10 +4,7 @@ public class Menu {
 
     Scanner sc = new Scanner(System.in);
 
-
-    /**
-     * Menu for the game with the option to end and start.
-     */
+    /**Menu for the game with the option to end and start.*/
     public void runMenu() {
         while (true) {
             try {
@@ -15,7 +12,6 @@ public class Menu {
                 System.out.println("Welcome to minesweeper! Whats your name?");
                 String playerName = sc.nextLine();
                 System.out.println("Hello, " + playerName + " press 1 to Play or 0 to Quit");
-
 
                 int menuChoice = sc.nextInt();
 
@@ -26,16 +22,11 @@ public class Menu {
                     System.exit(0);
                 }
 
-
             } catch (Exception e){
                 System.out.println("Invalid input");
                 sc.nextLine();
-
             }
-
             sc.close();
         }
-
     }
-
-    }
+}
