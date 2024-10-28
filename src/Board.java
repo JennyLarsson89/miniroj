@@ -119,7 +119,6 @@ public class Board {
                 finalBoard();
                 System.out.println("KABOOOM!");
                 menu.runMenuAgain();
-
             } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
                 System.out.println("Cell already chosen! Select another one.");
             } else {
