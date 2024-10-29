@@ -14,7 +14,6 @@ public class Board {
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
 
-
     /**
      * Makes the board empty
      */
@@ -26,11 +25,9 @@ public class Board {
         }
     }
 
-
     /**
      * Prints out the board with empty space
      */
-
     public void displayBoard() {
         System.out.println(boardColor.ANSI_PURPLE+ "  1 2 3 4 5 6"+ boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
@@ -57,9 +54,8 @@ public class Board {
         }
     }
 
-
     public void placeBombs() {
-        for (int i = 0; i < board[0].length; i++) {
+         for (int i = 0; i < board[0].length; i++) {
             int r = (int) Math.floor(Math.random() * board.length);
             int c = (int) Math.floor(Math.random() * board[0].length);
             board[r][c] = "o";
@@ -75,11 +71,6 @@ public class Board {
             playerRow = sc.nextInt();
             if (playerRow == 0){
                 System.out.println("Thank you! Bye");
-                System.exit(0);
-            }
-
-            if (playerRow == 0){
-                System.out.println("Thanks for playing, bye!!");
                 System.exit(0);
             }
 
@@ -102,16 +93,35 @@ public class Board {
             }
         }
 
-            if (board[playerRow - 1][playerCol - 1].equals("o")) {
-                finalBoard();
-                System.out.println("KABOOOM!");
-                menu.runMenuAgain();
+        if (board[playerRow - 1][playerCol - 1].equals("o")) {
+            finalBoard();
+            System.out.println("KABOOOM!");
+            menu.runMenuAgain();
+        } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
+            System.out.println("Cell already chosen! Select another one.");
+        } else {
+            board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
 
-            } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
-                System.out.println("Cell already chosen! Select another one.");
-            } else {
-                board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
+            // Kontrollera om spelaren har vunnit
+            if (checkWinCondition()) {
+                System.out.println("Congratulations! You've uncovered all safe cells and won the game!");
+                menu.runMenuAgain();
             }
         }
-
     }
+
+    /**
+     * Kontrollera om alla säkra rutor har markerats med "X".
+     */
+    private boolean checkWinCondition() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                // Om en säker ruta (utan bomb) inte är markerad som "X", har spelaren inte vunnit än.
+                if (!board[i][j].equals("o") && !board[i][j].equals("X")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
