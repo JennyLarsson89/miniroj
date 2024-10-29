@@ -1,24 +1,35 @@
 public class Player {
-    private final String playerName;
-    private final String playerSymbol;
+    private final String name;
+    private char playerSymbol;
 
     // Const
-    public Player(String playerName, String playerSymbol) {
-        this.playerName = playerName;
+    public Player(String name, char playerSymbol) {
+        this.name = name;
         this.playerSymbol = playerSymbol;
     }
 
 
-   //Getter & Setter for player name.
-    public String getPlayerName() {return playerName;}
-    public String setPlayerName(String playerName) {return playerName;}
+    /**
+     *
+     * @return Return the player name.
+     */
+    public String getName() {
+        return name;
+    }
 
 
+    /**
+     *
+     * @return Sets the player symbol.
+     */
+    public char setPlayerSymbol() {return playerSymbol;}
 
 
-    //Getter & Setter for player symbol.
-    public String setPlayerSymbol() {return playerSymbol;}
-    public String getPlayerSymbol() {return playerSymbol;}
+    /**
+     *
+     * @return Return the player char symbol
+     */
+    public char getPlayerSymbol() {return playerSymbol;}
 
 
 

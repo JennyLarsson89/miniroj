@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
@@ -14,7 +13,6 @@ public class Board {
 
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
-    Player player = new Player("","x");
 
 
     /**
@@ -70,70 +68,50 @@ public class Board {
 
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
-        try {
-            boolean rowChoice = false;
 
+        boolean rowChoice = false;
+        while (!rowChoice) {
             System.out.println("Please enter the row number. (0 to quit)");
             playerRow = sc.nextInt();
-
-            while (!rowChoice) {
-
-
-                displayBoard();
-                if (playerRow == 0) {
-                    System.out.println("Thank you! Bye");
-                    System.exit(0);
-                }
-
-                if (playerRow == 0) {
-                    System.out.println("Thanks for playing, bye!!");
-                    System.exit(0);
-                }
-
-                if (playerRow < 1 || playerRow > 6) {
-                    System.out.println("Invalid choice, 1-6 valid inputs");
-                } else {
-                    rowChoice = true;
-                }
-
+            if (playerRow == 0){
+                System.out.println("Thank you! Bye");
+                System.exit(0);
             }
 
-            boolean colChoice = false;
+            if (playerRow == 0){
+                System.out.println("Thanks for playing, bye!!");
+                System.exit(0);
+            }
 
+            if (playerRow < 1 || playerRow > 6) {
+                System.out.println("Invalid choice, try again!");
+            } else {
+                rowChoice = true;
+            }
+        }
+
+        boolean colChoice = false;
+        while (!colChoice) {
             System.out.println("Please enter the column number. (0 to quit)");
             playerCol = sc.nextInt();
-            while (!colChoice) {
-                try {
 
-                    displayBoard();
-                    if (playerCol < 1 || playerCol > 6) {
-                        System.out.println("Invalid choice, 1-6 valid inputs");
-                    } else {
-                        colChoice = true;
-                    }
-
-
-                    if (board[playerRow - 1][playerCol - 1].equals("o")) {
-                        finalBoard();
-                        System.out.println("KABOOOM!");
-                        menu.runMenuAgain();
-
-                    } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
-                        System.out.println("Cell already chosen! Select another one.");
-                    } else {
-                        board[playerRow - 1][playerCol - 1] = player.getPlayerSymbol();  // Markerar vald ruta med 'X'
-                    }
-                } catch (InputMismatchException e) {
-                    System.out.println("Invalid choice, 1-6 valid input");
-                    sc.nextLine();
-                }
+            if (playerCol < 1 || playerCol > 6) {
+                System.out.println("Invalid choice, try again!");
+            } else {
+                colChoice = true;
             }
-
-
-        }catch (InputMismatchException e) {
-            System.out.println("Invalid choice, 1-6 valid input");
-            sc.nextLine();
-
         }
-    }
+
+            if (board[playerRow - 1][playerCol - 1].equals("o")) {
+                finalBoard();
+                System.out.println("KABOOOM!");
+                menu.runMenuAgain();
+
+            } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
+                System.out.println("Cell already chosen! Select another one.");
+            } else {
+                board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
+            }
+        }
+
     }
