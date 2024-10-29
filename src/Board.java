@@ -11,6 +11,7 @@ public class Board {
         board = new String[6][6];
     }
 
+
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
 
