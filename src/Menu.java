@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 
+    public static boolean boom = false;
     Scanner sc = new Scanner(System.in);
 
     /**Menu for the game with the option to end and start.*/
@@ -9,9 +10,16 @@ public class Menu {
         while (true) {
             try {
 
-                System.out.println("Welcome to minesweeper! Whats your name?");
-                String playerName = sc.nextLine();
-                System.out.println("Hello, " + playerName + " press 1 to Play or 0 to Quit");
+                if (!boom) {
+                    System.out.println("Welcome to minesweeper! Whats your name?");
+                    String playerName = sc.nextLine();
+                    System.out.println("Hello, " + playerName + " press 1 to Play or 0 to Quit");
+                }
+
+                if (boom) {
+                    String playerName = sc.nextLine();
+                    System.out.println( playerName + " Press 1 to Play or 0 to Quit");
+                }
 
                 int menuChoice = sc.nextInt();
 
@@ -26,7 +34,6 @@ public class Menu {
                 System.out.println("Invalid input");
                 sc.nextLine();
             }
-            sc.close();
         }
     }
 }
