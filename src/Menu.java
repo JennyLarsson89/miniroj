@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
+    Player player = new Player("",'X');
 
 
     /**
@@ -14,7 +15,7 @@ public class Menu {
 
                 System.out.println("Welcome to minesweeper! Whats your name?");
                 String playerName = sc.nextLine();
-                System.out.println("Hello, " + playerName + " press 1 to Play or 0 to Quit");
+                System.out.println("Hello, " + player.setPlayerName(playerName) + " press 1 to Play or 0 to Quit");
 
                 int menuChoice = sc.nextInt();
 

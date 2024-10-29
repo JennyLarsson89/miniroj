@@ -37,7 +37,7 @@ public class Board {
             System.out.print(boardColor.ANSI_YELLOW + (i + 1) + " "+boardColor.ANSI_RESET );
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].equals("o")) {
-                    System.out.print(boardColor.ANSI_BLUE + " |" + boardColor.ANSI_RESET );
+                    System.out.print(boardColor.ANSI_RED + " |" + boardColor.ANSI_RESET );
                 } else {
                     System.out.print(boardColor.ANSI_BLUE + board[i][j] + "|" + boardColor.ANSI_RESET);
                 }
@@ -59,12 +59,28 @@ public class Board {
 
 
     public void placeBombs() {
-        for (int i = 0; i < board[0].length; i++) {
+        for (int i = 0; i < 36; i++) {
+//        for (int i = 0; i < board[0].length; i++) {
             int r = (int) Math.floor(Math.random() * board.length);
             int c = (int) Math.floor(Math.random() * board[0].length);
             board[r][c] = "o";
         }
     }
+
+    public Boolean boardFull(String[][] board) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if ((board[i][j].equals("X")) || (board[i][j].equals("o"))) {
+
+                }
+            }
+        }
+        System.out.println("You survived!");
+        return true;
+        }
+    
+
+
 
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
@@ -112,6 +128,6 @@ public class Board {
             } else {
                 board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
             }
-        }
 
-    }
+                }
+        }

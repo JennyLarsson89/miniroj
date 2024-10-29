@@ -10,8 +10,8 @@ boolean gameOver = false;
      */
     public void play(){
         board.initializeBoard();
-        board.displayBoard();
         board.placeBombs();
+        board.displayBoard();
         while(!gameOver){
         board.selectCell();
         board.displayBoard();
