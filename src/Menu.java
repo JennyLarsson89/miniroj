@@ -5,9 +5,7 @@ public class Menu {
     Scanner sc = new Scanner(System.in);
 
 
-    /**
-     * Menu for the game with the option to end and start.
-     */
+    //Start the game with an option to play or quit.
     public void runMenu() {
         while (true) {
             try {
@@ -33,6 +31,7 @@ public class Menu {
         }
         }
 
+    //Option to restart the game.
     public void runMenuAgain() {
         while (true) {
             try {

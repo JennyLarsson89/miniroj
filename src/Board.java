@@ -5,19 +5,18 @@ public class Board {
     private int playerRow;
     private int playerCol;
 
+    //Cons
     public Board(int playerRow, int playerCol) {
         this.playerRow = playerRow;
         this.playerCol = playerCol;
         board = new String[6][6];
     }
 
-
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
 
-    /**
-     * Makes the board empty
-     */
+
+    //Makes the board empty
     public void initializeBoard() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
@@ -26,9 +25,7 @@ public class Board {
         }
     }
 
-    /**
-     * Prints out the board with empty space
-     */
+    //Prints out board with an empty spot and hide the bombs.
     public void displayBoard() {
         System.out.println(boardColor.ANSI_PURPLE+ "  1 2 3 4 5 6"+ boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
@@ -44,6 +41,7 @@ public class Board {
         }
     }
 
+    //Prints out all the bomb.
     public void finalBoard() {
         System.out.println(boardColor.ANSI_YELLOW + "  1 2 3 4 5 6" + boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
@@ -55,6 +53,7 @@ public class Board {
         }
     }
 
+    //Bomb placement on the board with random function.
     public void placeBombs() {
          for (int i = 0; i < board[0].length; i++) {
             int r = (int) Math.floor(Math.random() * board.length);
@@ -63,6 +62,8 @@ public class Board {
         }
     }
 
+    //Method for selecting a spot on the board.
+    //Checks for invalid and valid input.
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
 
@@ -112,7 +113,7 @@ public class Board {
     }
 
     /**
-     * Kontrollera om alla säkra rutor har markerats med "X".
+     * @return Checks the board for an empty spot. And if the board is full return true.
      */
     private boolean checkWinCondition() {
         for (int i = 0; i < board.length; i++) {

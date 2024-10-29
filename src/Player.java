@@ -9,8 +9,8 @@ public class Player {
     }
 
 
+
     /**
-     *
      * @return Return the player name.
      */
     public String getName() {
@@ -26,8 +26,7 @@ public class Player {
 
 
     /**
-     *
-     * @return Return the player char symbol
+     * @return PLayer symbol
      */
     public char getPlayerSymbol() {return playerSymbol;}
 

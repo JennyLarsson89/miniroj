@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Game {
 
 Board board = new Board(6, 6);
-
 boolean gameOver = false;
-    /**
-     * The game loop starts here.
-     */
+
+
+
+    //The game loop starts here.
     public void play(){
         board.initializeBoard();
         board.placeBombs();
@@ -17,17 +17,6 @@ boolean gameOver = false;
             board.displayBoard();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
