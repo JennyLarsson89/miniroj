@@ -12,6 +12,8 @@ public class Board {
         board = new String[6][6];
     }
 
+    Player player = new Player("","X");
+
 
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
@@ -106,7 +108,7 @@ public class Board {
             } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
                 System.out.println("Cell already chosen! Select another one.");
             } else {
-                board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
+                board[playerRow - 1][playerCol - 1] = player.getPlayerSymbol();  // Markerar vald ruta med 'X'
 
                 // Kontrollera om spelaren har vunnit
                 if (checkWinCondition()) {
