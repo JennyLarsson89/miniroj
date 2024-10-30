@@ -28,7 +28,7 @@ public class Menu {
 
             } catch (Exception e){
                 System.out.println("Invalid input");
-
+                sc.nextLine();
             }
         }
         }
@@ -51,7 +51,7 @@ public class Menu {
 
             } catch (Exception e){
                 System.out.println("Invalid input");
-
+                sc.nextLine();
             }
         }
     }

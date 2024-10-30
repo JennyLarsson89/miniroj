@@ -1,9 +1,9 @@
 public class Player {
     private final String name;
-    private char playerSymbol;
+    private String playerSymbol;
 
     // Const
-    public Player(String name, char playerSymbol) {
+    public Player(String name, String playerSymbol) {
         this.name = name;
         this.playerSymbol = playerSymbol;
     }
@@ -22,14 +22,18 @@ public class Player {
      *
      * @return Sets the player symbol.
      */
-    public char setPlayerSymbol() {return playerSymbol;}
+    public void setPlayerSymbol(String playerSymbol) {
+
+        this.playerSymbol = playerSymbol;
+
+    }
 
 
     /**
      *
      * @return Return the player char symbol
      */
-    public char getPlayerSymbol() {return playerSymbol;}
+    public String getPlayerSymbol() {return playerSymbol;}
 
 
 

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Board {
@@ -66,48 +67,56 @@ public class Board {
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
 
-        boolean rowChoice = false;
-        while (!rowChoice) {
-            System.out.println("Please enter the row number. (0 to quit)");
-            playerRow = sc.nextInt();
-            if (playerRow == 0){
-                System.out.println("Thank you! Bye");
-                System.exit(0);
+        try {
+
+            boolean rowChoice = false;
+            while (!rowChoice) {
+
+
+                System.out.println("Please enter the row number. (0 to quit)");
+                playerRow = sc.nextInt();
+                if (playerRow == 0) {
+                    System.out.println("Thank you! Bye");
+                    System.exit(0);
+                }
+
+                if (playerRow < 1 || playerRow > 6) {
+                    System.out.println("Invalid choice, try again!");
+                } else {
+                    rowChoice = true;
+                }
             }
 
-            if (playerRow < 1 || playerRow > 6) {
-                System.out.println("Invalid choice, try again!");
-            } else {
-                rowChoice = true;
+            boolean colChoice = false;
+            while (!colChoice) {
+                System.out.println("Please enter the column number. (0 to quit)");
+                playerCol = sc.nextInt();
+
+                if (playerCol < 1 || playerCol > 6) {
+                    System.out.println("Invalid choice, try again!");
+                } else {
+                    colChoice = true;
+                }
             }
-        }
 
-        boolean colChoice = false;
-        while (!colChoice) {
-            System.out.println("Please enter the column number. (0 to quit)");
-            playerCol = sc.nextInt();
-
-            if (playerCol < 1 || playerCol > 6) {
-                System.out.println("Invalid choice, try again!");
-            } else {
-                colChoice = true;
-            }
-        }
-
-        if (board[playerRow - 1][playerCol - 1].equals("o")) {
-            finalBoard();
-            System.out.println("KABOOOM!");
-            menu.runMenuAgain();
-        } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
-            System.out.println("Cell already chosen! Select another one.");
-        } else {
-            board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
-
-            // Kontrollera om spelaren har vunnit
-            if (checkWinCondition()) {
-                System.out.println("Congratulations! You've uncovered all safe cells and won the game!");
+            if (board[playerRow - 1][playerCol - 1].equals("o")) {
+                finalBoard();
+                System.out.println("KABOOOM!");
                 menu.runMenuAgain();
+            } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
+                System.out.println("Cell already chosen! Select another one.");
+            } else {
+                board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
+
+                // Kontrollera om spelaren har vunnit
+                if (checkWinCondition()) {
+                    System.out.println("Congratulations! You've uncovered all safe cells and won the game!");
+                    menu.runMenuAgain();
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+            sc.nextLine();
         }
     }
 
