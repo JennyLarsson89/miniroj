@@ -2,9 +2,14 @@ import java.awt.*;
 import java.util.Scanner;
 
 public class Board {
+
+    // Parameters
+
     private String[][] board;
     private int playerRow;
     private int playerCol;
+
+    // Constructor
 
     public Board(int playerRow, int playerCol) {
         this.playerRow = playerRow;
@@ -12,15 +17,14 @@ public class Board {
         board = new String[6][6];
     }
 
+    // Instances
+
     Player player = new Player("","X");
-
-
     Menu menu = new Menu();
     BoardColor boardColor = new BoardColor();
 
-    /**
-     * Makes the board empty
-     */
+    // Create empty board
+
     public void initializeBoard() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
@@ -29,9 +33,8 @@ public class Board {
         }
     }
 
-    /**
-     * Prints out the board with empty space
-     */
+    // Display the board
+
     public void displayBoard() {
         System.out.println(boardColor.ANSI_PURPLE+ "  1 2 3 4 5 6"+ boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
@@ -47,6 +50,8 @@ public class Board {
         }
     }
 
+    // Display full board at the end of game
+
     public void finalBoard() {
         System.out.println(boardColor.ANSI_YELLOW + "  1 2 3 4 5 6" + boardColor.ANSI_RESET);
         for (int i = 0; i < board.length; i++) {
@@ -58,6 +63,8 @@ public class Board {
         }
     }
 
+    // Randomly place bombs on board
+
     public void placeBombs() {
          for (int i = 0; i < board[0].length; i++) {
             int r = (int) Math.floor(Math.random() * board.length);
@@ -65,6 +72,8 @@ public class Board {
             board[r][c] = "o";
         }
     }
+
+    // Check players choice of cell and place X
 
     public void selectCell() {
         Scanner sc = new Scanner(System.in);
@@ -114,7 +123,6 @@ public class Board {
             } else {
                 board[playerRow - 1][playerCol - 1] = player.getPlayerSymbol();  // Markerar vald ruta med 'X'
 
-                // Kontrollera om spelaren har vunnit
                 if (checkWinCondition()) {
                     System.out.println("Congratulations! You've uncovered all safe cells and won the game!");
                     menu.runMenuAgain();
@@ -126,13 +134,11 @@ public class Board {
         }
     }
 
-    /**
-     * Kontrollera om alla säkra rutor har markerats med "X".
-     */
+    // Check if board is full
+
     private boolean checkWinCondition() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                // Om en säker ruta (utan bomb) inte är markerad som "X", har spelaren inte vunnit än.
                 if (!board[i][j].equals("o") && !board[i][j].equals("X")) {
                     return false;
                 }

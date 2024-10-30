@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Menu {
 
+    // Instances
+
     Scanner sc = new Scanner(System.in);
     Player player = new Player("","X");
     BoardColor boardColor = new BoardColor();
-    /**
-     * Menu for the game with the option to end and start.
-     */
+
+    // Start game
+
     public void runMenu() {
         while (true) {
             try {
@@ -35,6 +37,8 @@ public class Menu {
         }
         }
 
+    // Repeats game
+        
     public void runMenuAgain() {
         while (true) {
             try {
