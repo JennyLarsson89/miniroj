@@ -4,7 +4,7 @@ public class Menu {
 
     Scanner sc = new Scanner(System.in);
     Player player = new Player("","X");
-
+    BoardColor boardColor = new BoardColor();
     /**
      * Menu for the game with the option to end and start.
      */
@@ -12,7 +12,7 @@ public class Menu {
         while (true) {
             try {
 
-                System.out.println("Welcome to minesweeper! Whats your name?");
+                System.out.println(boardColor.ANSI_RED + "\uD83D\uDCA3 Welcome to minesweeper! Whats your name? \uD83D\uDCA3" + boardColor.ANSI_RESET);
                 String playerName = sc.nextLine();
                 player.setPlayerName(playerName);
 
