@@ -1,5 +1,5 @@
 public class Player {
-    private final String name;
+    private String name;
     private String playerSymbol;
 
     // Const
@@ -26,6 +26,10 @@ public class Player {
 
         this.playerSymbol = playerSymbol;
 
+    }
+
+    public void setPlayerName(String name){
+        this.name = name;
     }
 
 
