@@ -14,9 +14,14 @@ public class Board {
         revealed = new boolean[ROWS][COLUMNS]; // en boolean-array för avslöjade celler.
     }
 
-    /**@return Getter for the playerRow.*/
-    public int getPlayerRow() {
-        return playerRow;
+    // Metod initializeGrid initierar och beräknar minorna
+    public void initializeGrid() { // Initiera spelbrädet med tomma celler.
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                grid[i][j] = new Cell();
+            }
+        }
+        remainingCells = ROWS * COLUMNS - MINES; // Beräkna antalet återstående celler att avslöja.
     }
 
     /**@return Getter for the playerCol.*/
