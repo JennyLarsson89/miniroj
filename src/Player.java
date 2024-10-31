@@ -1,25 +1,31 @@
+import java.util.Scanner;
+
 public class Player {
     private final String name;
-    private char playerSymbol;
+    private int score;
 
     // Const
-    public Player(String name, char playerSymbol) {
-        this.name = name;
-        this.playerSymbol = playerSymbol;
+    public Player() {
+        System.out.print("Ange ditt namn: ");
+        Scanner sc = new Scanner(System.in);
+        this.name = sc.nextLine();
+        this.score = 0;
     }
 
-    /**@return Return the player name.*/
-    public String getName() {
+    public String getName(String jonas) {
         return name;
     }
 
-    /**@return Sets the player symbol.*/
-    public char setPlayerSymbol() {return playerSymbol;}
+    public int getScore() {
+        return score;
+    }
 
+    public void increaseScore() {
+        this.score++;
+    }
 
-    /**@return Return the player char symbol*/
-    public char getPlayerSymbol() {return playerSymbol;}
-
+    @Override
+    public String toString() {
+        return "Spelare: " + name + ", Poäng: " + score;
+    }
 }
-
-
