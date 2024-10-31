@@ -24,9 +24,18 @@ public class Board {
         remainingCells = ROWS * COLUMNS - MINES; // Beräkna antalet återstående celler att avslöja.
     }
 
-    /**@return Getter for the playerCol.*/
-    public int getPlayerCol() {
-        return playerCol;
+    // Metod placeMines placerar minor
+    public void placeMines(int firstRow, int firstCol) {
+        int minesPlaced = 0;
+        while (minesPlaced < MINES) { // Placera minor slumpmässigt på brädet
+            int row = (int) (Math.random() * ROWS);
+            int col = (int) (Math.random() * COLUMNS);
+            if (grid[row][col].isMine() || (row == firstRow && col == firstCol)) {
+                continue;
+            }
+            grid[row][col].setMine(true);
+            minesPlaced++;
+        }
     }
 
 
