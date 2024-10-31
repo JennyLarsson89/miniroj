@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Board {
-    private int ROWS, COLUMNS, MINES, remainingCells; // ROWS, COLUMNS, MINES: Håller dimensioner och antalet minor.
+    private int ROWS, COLUMNS, MINES, remainingCells; // Håller dimensioner och antalet minor.
     private final Cell[][] grid; // En tvådimensionell array
     private final boolean[][] revealed; // Spåra vilka celler som har avslöjats
 
