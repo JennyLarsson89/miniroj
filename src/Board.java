@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class Board {
-private String[][] board;
-private int playerRow;
-private int playerCol;
+    private int ROWS, COLUMNS, MINES, remainingCells; // ROWS, COLUMNS, MINES: Håller dimensioner och antalet minor.
+    private final Cell[][] grid; // En tvådimensionell array
+    private final boolean[][] revealed; // Spåra vilka celler som har avslöjats
 
     /**@return Getter for the board to use in different class.*/
     public String[][] getBoard() {
