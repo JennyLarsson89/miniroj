@@ -9,9 +9,18 @@ public class Game {
     private  Scanner sc = new Scanner(System.in);
     private  Menu menu = new Menu();
 
-    Scanner sc = new Scanner(System.in);
-    Board board = new Board(6, 6);
-    boolean gameOver = false;
+    public void start() {
+        System.out.println("Välkommen till " + Color.CYAN + "\tMINRÖJ\t" + Color.RESET +"spelet!"); // Speltitel
+        player = new Player();
+        int difficulty = menu.displayMenu(); // Anropar displayMenu
+        int[] sizes = menu.getGridSize(difficulty); // Få storlekarna som en int[]
+        board = new Board(sizes); // Skapa nytt Board med storlek och Player.
+        flags = 0;
+        attempts = 0; // försök 0
+        remainingMines = board.getMines(); // antalet återstående minor
+        startTime = System.currentTimeMillis(); // Starta tidtagning
+        play(); // börja spela
+    }
 
     /**The game loop starts here.*/
     public void play(){
