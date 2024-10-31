@@ -123,6 +123,31 @@ public class Board {
         }
     }
 
+    // Avslöja alla celler när är BOOM!
+    public void revealAllCells() {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                revealed[i][j] = true;
+            }
+        }
+    }
+
+    // Metod kontrollera vinst
+    public boolean checkWin() {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if (!grid[i][j].isMine() && !revealed[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // Kontroll om det finns en mina
+    public boolean isMine(int row, int col) {
+        return grid[row][col].isMine();
+    }
 
 
 
