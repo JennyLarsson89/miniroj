@@ -78,48 +78,35 @@ public class Board {
         for (int i = 0; i < ROWS; i++) {
             System.out.print("\t ");
 
+            for (int j = 0; j < COLUMNS; j++) {
+                if (grid[i][j].isFlagged()) {
+                    System.out.print(" |⛳");
+                } else if (revealed[i][j]) {
+                    if (grid[i][j].isMine()) {
+                        System.out.print("\t|" + Color.RED +"\uD83D\uDCA3"+Color.RESET);
+                    } else if (grid[i][j].getAdjacentMines() == 0) {
+                        System.out.print("\t| 0");
+                    } else {
+                        String color = switch (grid[i][j].getAdjacentMines()) {
+                            case 1 -> Color.BRT_GREEN;
+                            case 2 -> Color.BRT_BLUE;
+                            case 3 -> Color.BRT_MAGENTA;
+                            case 4 -> Color.BRT_CYAN;
+                            case 5 -> Color.BRT_RED;
+                            case 6 -> Color.BRT_PURPLE;
+                            default -> Color.BRT_WHITE;
+                        };
+                        System.out.print("\t| " + color + grid[i][j].getAdjacentMines() + Color.RESET);
+                    }
+                } else {
+                    System.out.print("\t| *");
+                }
+            }
+            // Skriv ut koordinatnummer till höger
+            System.out.print(" | "+Color.YELLOW +(i + 1)+ Color.RESET);
+            System.out.println(); // Skriv ut brädet
         }
     }
-
-
-
-
-    /**
-     * Method for selecting a positions on the board.
-     */
-    public void selectCell() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter the row number 0:Quit");
-
-        playerRow = sc.nextInt();
-
-         //Quits the game with 0
-        if (playerRow == 0) {
-            System.out.println("Thanks for playing, bye!!");
-            System.exit(0);
-        }
-
-        System.out.println("Please enter the column number 0:Quit");
-
-        //Quits the game with 0
-        if (playerCol == 0) {
-            System.out.println("Thanks for playing, bye!!");
-            System.exit(0);
-        }
-
-        playerCol = sc.nextInt();
-
-
-        if (playerRow < 1 || playerRow > board.length || playerCol < 1 || playerCol > board.length) {
-            System.out.println("Invalid choice, try again!");
-        } else if (board[playerRow - 1][playerCol - 1].equals("o")) {
-            System.out.println("KABOOOM!");
-             System.exit(2);
-        } else if (!board[playerRow - 1][playerCol - 1].equals(" ")) {
-            System.out.println("Cell already chosen! Select another one.");
-        } else {
-            board[playerRow - 1][playerCol - 1] = "X";  // Markerar vald ruta med 'X'
-        }
 
         //Closing Scanner
         sc.close();
