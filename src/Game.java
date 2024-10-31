@@ -132,11 +132,19 @@ public class Game {
         board.finalBoard();
     }
 
-    public boolean checkDeath(int playerRow, int playerCol, String[][] board) {
-        if (board[playerRow][playerCol].equals("o")) {
-            System.out.println("Death");
-            return true;
-        }
-        return false;
+    // getTime Metod för att formatera tid format
+    private String formatTime(long milliseconds) {
+        long seconds = (milliseconds / 1000) % 60;
+        long minutes = (milliseconds / (1000 * 60)) % 60;
+        long hours = (milliseconds / (1000 * 60 * 60)) % 24;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        /*
+          Link -> https://www.geeksforgeeks.org/java-lang-system-currenttimemillis-method-with-examples/
+          %: Markerar början av en formatted specifikation.
+          0: Anger att om siffran är kortare än två tecken, ska den fyllas med en nolla (0) till vänster.
+          2: Anger att siffran ska ta upp exakt två positioner.
+          d: Anger att värdet är ett heltal (integer) */
     }
+
 }
