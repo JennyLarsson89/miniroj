@@ -62,40 +62,21 @@ public class Board {
     }
 }
 
-    /**Prints out the board with empty space*/
-    public void displayBoard() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].equals("o")) { // Om "o" är din bomb-symbol
-                    System.out.print(" |"); // Visa något annat istället
-                } else {
-                    System.out.print(board[i][j] + "|");
-                }
-            }
-            System.out.println();
-        }
+    // Kontrollera cellens giltighet om en given cell är inom brädets gränser.
+    private boolean isValidCell(int row, int col) {
+        return row >= 0 && row < ROWS && col >= 0 && col < COLUMNS;
     }
 
-    /**Method for Printing out the board with the bomb placement.*/
-    public void finalBoard() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                    System.out.print(board[i][j] + "|");
-            }
-            System.out.println();
+    //  Skriva ut brädet
+    public void printGrid() {
+        System.out.print("\t ");
+        for (int j = 1; j <= COLUMNS; j++) {
+            System.out.printf("\t"+ Color.YELLOW + "%7s", (j) + Color.RESET);
         }
-    }
-
-
-
-    /**
-     * Method for placing bombs on the board.
-     */
-    public void placeBombs() {
-        for (int i = 0; i < board[0].length; i++) {
-            int r = (int) Math.floor(Math.random() * board.length);
-            int c = (int) Math.floor(Math.random() * board[0].length);
-            board[r][c] = "o";
+        // Skriv ut koordinatnummer överst
+        System.out.println();
+        for (int i = 0; i < ROWS; i++) {
+            System.out.print("\t ");
 
         }
     }
