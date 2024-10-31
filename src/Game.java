@@ -1,6 +1,13 @@
 import java.util.Scanner;
 
 public class Game {
+    private Board board;
+    private Player player;
+    private boolean gameWon, gameLost; // för att spåra spelets tillstånd.
+    private int flags, attempts, remainingMines;  // flaggor, försök och återstående minor.
+    private long startTime, endTime;  // spåra spelets tidslängd.
+    private  Scanner sc = new Scanner(System.in);
+    private  Menu menu = new Menu();
 
     Scanner sc = new Scanner(System.in);
     Board board = new Board(6, 6);
