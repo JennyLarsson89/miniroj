@@ -160,5 +160,16 @@ public class Board {
         }
     }
 
+    // Getters & Setters
+    public int getRows() {
+        return ROWS;
+    }
 
+    public int getColumns() {
+        return COLUMNS;
+    }
+
+    public int getMines() {
+        return MINES;
+    }
 }
