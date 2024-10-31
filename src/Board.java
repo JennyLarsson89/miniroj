@@ -38,20 +38,26 @@ public class Board {
         }
     }
 
-
-    /**@param playerRow Movement for the board row
-     * @param playerCol Movement for the board col*/
-    public Board(int playerRow, int playerCol) {
-    this.playerRow = playerRow;
-    this.playerCol = playerCol;
-    board = new String[6][6];
-}
-
-    /**Makes the board empty*/
-    public void initializeBoard() {
-    for (int i = 0; i <6 ; i++) {
-        for (int j = 0; j <6 ; j++) {
-            board[i][j] = " ";
+    // Metod beräkna intilliggande minor
+    public void calculateAdjacentMines() {  // Beräkna antalet intilliggande minor för varje cell
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                if (!grid[i][j].isMine()) { // kontroll om den aktuella cellen är en mina
+                    int count = 0;
+                    for (int x = -1; x <= 1; x++) { // Inre loopar för att gå igenom närliggande celler:
+                        for (int y = -1; y <= 1; y++) { // x och y varierar mellan -1 och 1, vilket täcker alla möjliga 8 grannpositioner
+                            if ((x != 0 || y != 0) && isValidCell(i + x, j + y) && grid[i + x][j + y].isMine()) { //  en kombination av två villkor som används för att kontrollera om en närliggande cell innehåller en mina och är inom gränserna för spelbrädet.
+                                /* 1 (x != 0 || y != 0) kontroll att (x, y) inte är (0, 0), den aktuella cellens position
+                                   2 isValidCell(i + x, j + y) kontroll om koordinaterna (i + x, j + y) ligger inom spelbrädets gränser
+                                   3 grid[i + x][j + y].isMine() Om den närliggande cellen finns inom gränserna */
+                                count++;
+                            }
+                        }
+                    }
+                    // Anropa setAdjacentMines(count) för att tilldela count som antalet intilliggande minor
+                    grid[i][j].setAdjacentMines(count);
+                }
+            }
         }
     }
 }
