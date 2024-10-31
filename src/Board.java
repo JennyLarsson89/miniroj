@@ -60,7 +60,6 @@ public class Board {
             }
         }
     }
-}
 
     // Kontrollera cellens giltighet om en given cell är inom brädets gränser.
     private boolean isValidCell(int row, int col) {
