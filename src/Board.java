@@ -149,6 +149,16 @@ public class Board {
         return grid[row][col].isMine();
     }
 
+    // Kontroll om det är flaggad
+    public boolean isFlagged(int row, int col) {
+        return grid[row][col].isFlagged();
+    }
+    // Ändra flaggstatusen
+    public void toggleFlag(int row, int col) {
+        if (isValidCell(row, col) && !revealed[row][col]) {
+            grid[row][col].setFlagged(!grid[row][col].isFlagged());
+        }
+    }
 
 
 }
