@@ -129,7 +129,8 @@ public class Game {
             System.out.print("\t\tFlaggor: ⛳ " + flags + ", Minor: \uD83D\uDCA3 " + remainingMines);
             return getPlayerMove(maxRows, maxCols); // Be om ett nytt drag efter flaggning
         }
-        board.finalBoard();
+
+        return move;  // Returnera spelarens drag
     }
 
     // getTime Metod för att formatera tid format
