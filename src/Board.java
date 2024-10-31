@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class Board {
     private int ROWS, COLUMNS, MINES, remainingCells; // Håller dimensioner och antalet minor.
