@@ -107,8 +107,20 @@ public class Board {
         }
     }
 
-        //Closing Scanner
-        sc.close();
+    // revealCell rekursivt metod avslöjar celler
+    public void revealCell(int row, int col) {
+        if (!isValidCell(row, col) || revealed[row][col] || grid[row][col].isFlagged()) {
+            return;
+        }
+        revealed[row][col] = true;
+        remainingCells--;
+        if (grid[row][col].getAdjacentMines() == 0) {
+            for (int x = -1; x <= 1; x++) {
+                for (int y = -1; y <= 1; y++) {
+                    revealCell(row + x, col + y);
+                }
+            }
+        }
     }
 
 
