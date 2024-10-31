@@ -5,9 +5,13 @@ public class Board {
     private final Cell[][] grid; // En tvådimensionell array
     private final boolean[][] revealed; // Spåra vilka celler som har avslöjats
 
-    /**@return Getter for the board to use in different class.*/
-    public String[][] getBoard() {
-        return board;
+    // Const
+    public Board(int[] sizes) {
+        this.ROWS = sizes[0];
+        this.COLUMNS = sizes[1];
+        this.MINES = sizes[2];
+        grid = new Cell[ROWS][COLUMNS]; // en ny cell-array
+        revealed = new boolean[ROWS][COLUMNS]; // en boolean-array för avslöjade celler.
     }
 
     /**@return Getter for the playerRow.*/
