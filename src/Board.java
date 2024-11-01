@@ -67,11 +67,11 @@ public class Board {
 
     //  Skriva ut brädet
     public void printGrid() {
+        // Skriv ut koordinatnummer överst
         System.out.print("\t ");
         for (int j = 1; j <= COLUMNS; j++) {
-            System.out.printf("\t"+ Color.YELLOW + "%7s", (j) + Color.RESET);
+            System.out.printf("\t"+ Color.BLUE + "%7s", (j) + Color.RESET);
         }
-        // Skriv ut koordinatnummer överst
         System.out.println();
         for (int i = 0; i < ROWS; i++) {
             System.out.print("\t ");
@@ -83,15 +83,15 @@ public class Board {
                     if (grid[i][j].isMine()) {
                         System.out.print("\t|" + Color.RED +"\uD83D\uDCA3"+Color.RESET);
                     } else if (grid[i][j].getAdjacentMines() == 0) {
-                        System.out.print("\t| 0");
+                        System.out.printf("\t| " + Color.BRT_WHITE + "0" + Color.RESET);
                     } else {
                         String color = switch (grid[i][j].getAdjacentMines()) {
-                            case 1 -> Color.BRT_GREEN;
-                            case 2 -> Color.BRT_BLUE;
-                            case 3 -> Color.BRT_MAGENTA;
-                            case 4 -> Color.BRT_CYAN;
-                            case 5 -> Color.BRT_RED;
-                            case 6 -> Color.BRT_PURPLE;
+                            case 1 -> Color.BRT_BLUE;
+                            case 2 -> Color.BRT_GREEN;
+                            case 3 -> Color.BRT_RED;
+                            case 4 -> Color.BRT_PURPLE;
+                            case 5 -> Color.BRT_CYAN;
+                            case 6 -> Color.BRT_RED;
                             default -> Color.BRT_WHITE;
                         };
                         System.out.print("\t| " + color + grid[i][j].getAdjacentMines() + Color.RESET);
@@ -101,7 +101,7 @@ public class Board {
                 }
             }
             // Skriv ut koordinatnummer till höger
-            System.out.print(" | "+Color.YELLOW +(i + 1)+ Color.RESET);
+            System.out.print(" | "+Color.GREEN +(i + 1)+ Color.RESET);
             System.out.println(); // Skriv ut brädet
         }
     }

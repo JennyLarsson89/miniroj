@@ -68,7 +68,7 @@ public class Menu {
         return new int[]{rows, cols, mines};
     }
 
-    // Metod getIntInput
+    // Metod getIntInput fångar ogiltig inmatning
     private int getIntInput(String prompt) {
         int value = 0;
         boolean validInput = false;

@@ -10,16 +10,31 @@ public class Game {
     private  Menu menu = new Menu();
 
     public void start() {
-        System.out.println("Välkommen till " + Color.CYAN + "\tMINRÖJ\t" + Color.RESET +"spelet!"); // Speltitel
-        player = new Player();
-        int difficulty = menu.displayMenu(); // Anropar displayMenu
-        int[] sizes = menu.getGridSize(difficulty); // Få storlekarna som en int[]
-        board = new Board(sizes); // Skapa nytt Board med storlek och Player.
-        flags = 0;
-        attempts = 0; // försök 0
-        remainingMines = board.getMines(); // antalet återstående minor
-        startTime = System.currentTimeMillis(); // Starta tidtagning
-        play(); // börja spela
+        boolean playAgain;
+
+        do { // kör så länge playAgain är true
+
+            if (player == null || player.getName() == null) { // Skapa spelare om den inte redan finns
+                System.out.println("Välkommen till " + Color.REVERSED + "\tMINRÖJ\t" + Color.RESET + " spelet!"); // Speltitel
+                player = new Player();
+            } else {
+                System.out.println("\nSpelar igen som: " + player.getName());
+            }
+
+            int difficulty = menu.displayMenu(); // Anropar displayMenu
+            int[] sizes = menu.getGridSize(difficulty); // Få storlekarna som en int[]
+            board = new Board(sizes); // Skapa nytt Board med storlek och Player.
+            flags = 0;
+            attempts = 0; // försök 0
+            remainingMines = board.getMines(); // antalet återstående minor
+            startTime = System.currentTimeMillis(); // Starta tidtagning
+            play(); // börja spela
+            System.out.print("Vill du spela igen? (j/n): ");
+            playAgain = sc.next().equals("j");
+        } while (playAgain);
+
+        System.out.println("Tack för att du spelade!");
+        sc.close();
     }
 
     // Play-metoden
@@ -68,6 +83,7 @@ public class Game {
             System.out.println("\n💥 Du trampade på en mina. Spelet är över. 💥");
         }
         System.out.println("\n\t\t<<== SLUTRESULTAT ==>>");
+        System.out.println("\t\t\t\uD83D\uDC64 Spelare: " + player.getName());
         System.out.println("\t\t\t⏱️ Tid: " + formatTime(endTime - startTime));
         System.out.printf("\t\t\t🔄 Försök: %d", attempts);
         System.out.println("\n\t\t\t⛳ Flaggor: " + flags);
