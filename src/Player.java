@@ -12,7 +12,7 @@ public class Player {
         this.score = 0;
     }
 
-    public String getName(String jonas) {
+    public String getName() {
         return name;
     }
 
@@ -26,6 +26,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Spelare: " + name + ", Poäng: " + score;
+        return "Spelare: " + name + ", \uD83C\uDFC6 Poäng: " + score;
     }
 }
